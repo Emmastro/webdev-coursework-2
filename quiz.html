@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DRC Explore</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Merienda' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <img id="logo" src="images/DRC explore-logos_transparent.png">
+    <div class="banner" id="banner-home">
+
+        <h2 style="padding-top: 200px;">Test your knowledge about us</h2>
+
+        <!--form question templates -->
+        <!--Question 1: Radio buttons-->
+        <div class="form-check" id="radio-template" hidden>
+            <input class="form-check-input" type="radio" name="question1">
+            <label class="form-check-label"></label>
+        </div>
+
+        <!--Question 2: Check boxes-->
+        <div class="form-check" id="checkbox-template" hidden>
+            <input class="form-check-input" type="checkbox" name="question2" />
+            <label class="form-check-label"></label>
+        </div>
+
+        <!--Question 3: exact text input -->
+        <div class="form-check" id="text-template" hidden>
+            <input class="form-control" type="text" placeholder="Response" name="question3">
+        </div>
+
+        <!--Question 4: Drop down -->
+        <div class="card" id="dropdown-template" hidden>
+            <table>
+                <tr>
+                    <td>
+                        <label>Option 1</label>
+                    </td>
+                    <td>
+                        <select class="form-control" name="question4">
+                            <option value="">Option 1</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            <input class="form-check-input" type="radio" name="question4">
+            <label class="form-check-label"></label>
+        </div>
+
+        <!--Question 5: Multiple select -->
+
+        <div class="form-group" id="multi-select-template" hidden>
+            <label for="exampleFormControlSelect2">Example multiple select</label>
+            <select multiple class="form-control" id="">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+
+
+
+        <div class="card question-1">
+            <div class="card">
+                <p id="current-question-text"></p>
+            </div>
+
+            <div class="card">
+                <form id="question-1-form">
+                    <div id="form-content">
+                    </div>
+                    <button class="btn" id="submit">
+                        Check
+                    </button>
+                    <button class="btn" id="next-question">
+                        Next
+                    </button>
+
+                </form>
+            </div>
+
+            <div class="card">
+                <div class="alert alert-primary" id="feedback" hidden>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script src="js/index.js"></script>
+
+</html>
