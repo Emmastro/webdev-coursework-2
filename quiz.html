@@ -43,44 +43,36 @@
 
         <!--Question 4: Drop down -->
         <div class="card" id="dropdown-template" hidden>
-            <table>
-                <tr>
-                    <td>
-                        <label>Option 1</label>
-                    </td>
-                    <td>
-                        <select class="form-control" name="question4">
-                            <option value="">Option 1</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
 
-            <input class="form-check-input" type="radio" name="question4">
-            <label class="form-check-label"></label>
+            <select dir="rtl" class="form-control" name="question4">
+                <option value="0">East</option>
+                <option value="1">West</option>
+                <option value="2">North</option>
+                <option value="3">East</option>
+            </select>
+
         </div>
 
         <!--Question 5: Multiple select -->
 
         <div class="form-group" id="multi-select-template" hidden>
-            <label for="exampleFormControlSelect2">Example multiple select</label>
-            <select multiple class="form-control" id="">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+            <select dir="rtl" multiple class="form-control">
+                <option value=0>Kinshasa</option>
+                <option value=1>Goma</option>
+                <option value=2>Brazaville</option>
+                <option value=3>Boma</option>
+                <option value=4>Congo</option>
             </select>
         </div>
 
 
 
-        <div class="card question-1">
+        <div class="card question-card">
             <div class="card">
                 <p id="current-question-text"></p>
             </div>
 
-            <div class="card">
+            <div class="car">
                 <form id="question-1-form">
                     <div id="form-content">
                     </div>
@@ -93,11 +85,9 @@
 
                 </form>
             </div>
+            <br>
+            <div class="alert alert-primary" id="feedback" hidden>
 
-            <div class="card">
-                <div class="alert alert-primary" id="feedback" hidden>
-
-                </div>
             </div>
         </div>
     </div>

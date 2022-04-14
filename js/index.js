@@ -13,12 +13,12 @@ const questionData = [
     feedback: "We are DRC explore!",
   },
   {
-    question: "How much do you know about DRC? Can you match these touristic places to their cities?",
-    feedback: "Feedback for question 1",
+    question: "Can you select the correct location for Kinshasa?",
+    feedback: "Kinshasa, the capital of DRC is in the west of the country.",
   },
   {
-    question: "Below is a list of mountains in DRC. Can you recognize what should not be on this list?",
-    feedback: "Feedback for question 1",
+    question: "Below is a list of cities in DRC. Can you recognize what should not be on this list?",
+    feedback: "Among these cities, only Kinshasa, Boma and Goma are in DRC. Brazaville is from the Republic of Congo, and Congo is not a city.",
   },
 ];
 
@@ -84,6 +84,42 @@ const optionsQuestion2 = [
   },
 ];
 
+const matchesQuestion4 = [
+  "Virunga National Park",
+  "Lola ya Bonobo",
+  "Kahuzi Biega National Park",
+  "Mikembo"
+]
+
+const optionsQuestion4 = [
+  {
+    id: "option1",
+    value: "option1",
+    option: "Southern region",
+    match: 3,
+  },
+  {
+    id: "option2",
+    value: "option2",
+    option: "Eastern region",
+    match: 0,
+  },
+  {
+    id: "option3",
+    value: "option3",
+    option: "Northen region",
+    match: 2,
+  },
+  {
+    id: "option4",
+    value: "option4",
+    option: "Western region",
+    match: 1
+  },
+];
+
+const correctResponse4 = 1; 
+const correstResponse5 = ['2', '4'];
 let correctResponse;
 let currentQuestion = 1;
 
@@ -109,7 +145,7 @@ const updateQuestion = () => {
   formContent.innerHTML = "";
   if (currentQuestion == 1) {
     optionsQuestion1.forEach((element) => {
-      //console.log(radioTemplate.cloneNode(true))
+    
       let node = radioTemplate.cloneNode(true);
       node.removeAttribute("hidden");
       node.removeAttribute("id");
@@ -122,7 +158,7 @@ const updateQuestion = () => {
     });
   } else if (currentQuestion == 2) {
     optionsQuestion2.forEach((element) => {
-      console.log(element);
+
       let node = checkboxTemplate.cloneNode(true);
       node.removeAttribute("hidden");
       node.removeAttribute("id");
@@ -136,17 +172,22 @@ const updateQuestion = () => {
   } else if (currentQuestion == 3) {
     let node = textTemplate.cloneNode(true);
     node.removeAttribute("hidden");
+    node.querySelector("input").setAttribute("id", "text-input");
     formContent.appendChild(node);
   } else if (currentQuestion == 4) {
     let node = dropdownTemplate.cloneNode(true);
     node.removeAttribute("hidden");
+    node.querySelector("select").setAttribute("id", "dropdown-input");
     formContent.appendChild(node);
   } else if (currentQuestion == 5) {
     let node = multiSelectTemplate.cloneNode(true);
+    node.querySelector("select").setAttribute("id", "multi-select-input");
     node.removeAttribute("hidden");
     formContent.appendChild(node);
   }
 };
+
+const equals = (a, b) => a.length === b.length && a.every((v, i) => v === b[i]);
 
 const checkResponse = () => {
   if (currentQuestion == 1) {
@@ -172,8 +213,28 @@ const checkResponse = () => {
     console.log("all checks passed")
     return true;
   }
+  else if (currentQuestion == 3) {
+    if (document.querySelector("#text-input").value.toLowerCase().trim() == "drc explore") {
+      return true;
+    }
+  }
+  else if (currentQuestion == 4) {
+    if (document.querySelector("#dropdown-input").value == correctResponse4) {
+      return true;
+    }
+  }
+  else if (currentQuestion == 5){
+
+    const selected = document.querySelector("#multi-select-input").selectedOptions
+    const values = Array.from(selected).map(l => l.value);
+
+    if (equals(values, correstResponse5)) {
+      return true;
+    }
+  }
   return false;
 };
+
 updateQuestion();
 
 submitButton.addEventListener("click", (event) => {
@@ -199,6 +260,5 @@ nextQuestion.addEventListener("click", (event) => {
   currentQuestion++;
   updateQuestion();
   feedback.setAttribute("hidden", true);
-  //form = document.getElementById("question-" + currentQuestion + "-form");
-  //form.removeAttribute("hidden");
+  
 });
